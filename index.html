@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omega Blogs</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    /* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+}
+button{
+
+    background-color: white;
+    border-radius: 15px;
+    border: none;
+    border-color: white;
+    width: 100px;
+    height: 50px;
+}
+p{
+    padding-top: 20px;
+    font-size: 24px;
+    font-family: 'Times New Roman', Times, serif;
+}
+/* Responsive Styles */
+@media only screen and (max-width: 768px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .nav-links li {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
+
+</style>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">Omega Blogs</h1>
+            <button id="1">Add a Blog</button>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Welcome to Omega Blogs</h1>
+        <p>This is a platform where you can explore and share various blogs.</p>
+        <div id="blogs"></div>
+    </div>
+</body>
+<script>
+    let author = ""
+    let blog = ""
+    const button = document.getElementById('1');
+    const blogsContainer = document.getElementById('blogs');
+
+    button.addEventListener('click', function(){
+        author = prompt("Enter your name");
+        blog = prompt("Specify your content");
+
+        // Create new elements to display the entered information
+        const authorElement = document.createElement('p');
+        authorElement.innerHTML = "<strong>Author:</strong> " + author;
+
+        const blogElement = document.createElement('p');
+        blogElement.innerHTML = "<strong>Blog:</strong> " + blog;
+
+        // Append the new elements to the blogs container
+        blogsContainer.appendChild(authorElement);
+        blogsContainer.appendChild(blogElement);
+    });
+</script>
+</html>
