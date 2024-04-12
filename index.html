@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Omega Blogs</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js">
+    </script>
 </head>
 <style>
     /* Reset CSS */
@@ -162,12 +164,25 @@ p{
     
 </body>
 <script>
-
-    function saveMessage(name, email) {
+    const firebaseConfig = {
+    apiKey: "AIzaSyApHYiXesX-_2OCyb55qAzi8PeoH5hssOQ",
+    authDomain: "omegablogs-24ade.firebaseapp.com",
+    databaseURL: "https://omegablogs-24ade-default-rtdb.firebaseio.com",
+    projectId: "omegablogs-24ade",
+    storageBucket: "omegablogs-24ade.appspot.com",
+    messagingSenderId: "809532008194",
+    appId: "1:809532008194:web:763033aeea6fb98cbbc41b"
+  };
+ 
+        firebase.initializeApp(firebaseConfig);
+ 
+        let messagesRef = firebase.database().ref('Collected Data');
+         
+    function saveMessage(title, blog) {
             let newMessageRef = messagesRef.push();
             newMessageRef.set({
-                name: name,
-                email: email,
+                title: title,
+                blog: blog,
             });
         }
     const button = document.getElementById('add');
@@ -177,11 +192,8 @@ p{
         // Get the author name and blog content from the textareas
         const authorName = document.getElementById('text1').value;
         const blogContent = document.getElementById('text2').value;
-        saveMessage(authorName, blogContent);
-        document.getElementById('text1').value=""
-        document.getElementById('text2').value=""
-            // document.getElementById('contactForm').reset();
-        // Create elements for the new blog post
+        
+
         const div = document.createElement('div');
         div.classList.add('blog');
 
@@ -203,22 +215,11 @@ p{
         div.appendChild(authorHeading);
         div.appendChild(contentParagraph);
         blogsContainer.appendChild(div);
+
+        saveMessage(authorName, blogContent)
     });
 
-    const firebaseConfig = {
-    apiKey: "AIzaSyApHYiXesX-_2OCyb55qAzi8PeoH5hssOQ",
-    authDomain: "omegablogs-24ade.firebaseapp.com",
-    databaseURL: "https://omegablogs-24ade-default-rtdb.firebaseio.com",
-    projectId: "omegablogs-24ade",
-    storageBucket: "omegablogs-24ade.appspot.com",
-    messagingSenderId: "809532008194",
-    appId: "1:809532008194:web:763033aeea6fb98cbbc41b"
-  };
- 
-        firebase.initializeApp(firebaseConfig);
- 
-        let messagesRef = firebase.database().ref('Collected Data');
-         
+    
        
  
             
@@ -232,7 +233,5 @@ p{
 
 </script>
 </html>
-<script src=
-"https://www.gstatic.com/firebasejs/3.7.4/firebase.js">
-    </script>
+
      
