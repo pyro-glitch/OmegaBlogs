@@ -52,58 +52,7 @@ async function login() {
     var password = document.getElementById('password').value;
 
     if (await checkuser(username, password)) {
-        // location.href = "/viewBlogs.html";
-        document.innerHtml="";
-        document.innerHtml="<nav class="navbar">
-        <div class="container">
-            <h1 class="logo">Omega Blogs</h1>
-            <button id="add">Add a Blog</button>
-        </div>
-    </nav>
-    <div style="display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
-                padding-top: 30px;" 
-                id="content_container">
-        <h1>Welcome to OmegaBlogs</h1>
-        <p style="margin-bottom: 20px;color: black;">This is a place where you can share your ideas and perspective</p>
-        <div style="display: flex;flex-direction: column;background-color: rgba(255, 255, 255, 0.3);
-                    width: 500px;height: 150px;align-items: center;justify-content: center;
-                    border-radius: 20px;
-                    font-family:Arial, Helvetica, sans-serif;">
-            <div style="display: flex;">
-                <p>Enter the Title</p>
-                <textarea id = 'text1' style="resize: none;
-                    border-radius: 20px;
-                    background-color: rgba(255, 255, 255, 0.5);
-                    padding-top: 10px;
-                    text-align: center;
-                    font-family: Arial, Helvetica, sans-serif;
-                    font-size: small;
-                    margin-left: 10px;
-                    ">
-                </textarea>
-            </div>
-            <div style="display: flex;margin-top: 10px;">
-                <p>Enter the Blog Content</p>
-                <textarea id = 'text2' style="resize: none;
-                    border-radius: 20px;
-                    background-color: rgba(255, 255, 255, 0.5);
-                    padding-top: 10px;
-                    text-align: center;
-                    font-family: Arial, Helvetica, sans-serif;
-                    font-size: small;
-                    margin-left: 10px;
-                    ">
-                </textarea>
-            </div>
-        </div>
-
-    </div>";
-
-
-
+        location.href = "https://omegablogs.pages.dev/viewBlogs";
 
         
     } else {
