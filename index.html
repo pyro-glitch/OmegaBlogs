@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- <script src="login.js"></script> -->
+    <link rel="stylesheet" href="loginStyle.css">
+    <title>Omega Blogs | Login</title>
+</head>
+
+<body>
+
+    <div class="login-card">
+        <h2>Login</h2>
+        <!-- <form onsubmit="login"> -->
+            <input id="username" type="text" placeholder="Username" required>
+            <input id="password" type="password" placeholder="Password" required>
+            <button type="submit" id ='1'>Login</button>
+        <!-- </form> -->
+    </div>
+
+</body>
+
+<script>
+
+async function checkuser(username, password) {
+    var found = false;
+
+    await fetch('userdata.csv')
+        .then(response => response.text())
+        .then(data => {
+            var rows = data.split('\n');
+            rows.forEach(row => {
+                var columns = row.split(',');
+                // Trim whitespaces from username and password before comparison
+                var storedUsername = columns[0].trim();
+                var storedPassword = columns[1].trim();
+                if (storedUsername === username && storedPassword === password) {
+                    found = true;
+                }
+            });
+        });
+
+    return found;
+}
+
+async function login() {
+    console.log("logging in...");
+
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+
+    if (await checkuser(username, password)) {
+        location.href = "/viewBlogs.html";
+    } else {
+        console.log("Login failed...");
+    }
+}
+    const button = document.getElementById('1')
+    button.addEventListener('click',login)
+
+</script>
+
+</html>
