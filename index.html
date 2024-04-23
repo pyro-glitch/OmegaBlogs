@@ -52,7 +52,7 @@ async function login() {
     var password = document.getElementById('password').value;
 
     if (await checkuser(username, password)) {
-        location.href = "https://omegablogs.pages.dev/viewBlogs";
+        window.location.href = "https://omegablogs.pages.dev/viewBlogs";
 
         
     } else {
